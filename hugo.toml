@@ -1,0 +1,15 @@
+# hugo.toml
+baseURL = "https://ernest.sh/"   # change after DNS/HTTPS
+languageCode = "en-us"
+title = "My Dev Blog"
+theme = "PaperMod"
+enableRobotsTXT = true
+paginate = 10
+
+[params]
+  defaultTheme = "auto"
+  showReadingTime = true
+  showCodeCopyButtons = true
+
+[markup.highlight]
+  lineNos = true
