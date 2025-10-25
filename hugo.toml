@@ -1,17 +1,113 @@
-# hugo.toml
-baseURL = "https://ernest.sh/"   # change after DNS/HTTPS
+# =========================
+# Hugo site config (hugo.toml)
+# =========================
+baseURL = "https://ernest.sh/"
 languageCode = "en-us"
-title = "My Dev Blog"
+title = "Application Security & DevSecOps"
 theme = "PaperMod"
 enableRobotsTXT = true
 
+# Hugo >= 0.128: use pagination.pagerSize
 [pagination]
   pagerSize = 10
 
+# -------------------------
+# PaperMod global parameters
+# -------------------------
 [params]
-  defaultTheme = "auto"
+  # Appearance & UX
+  defaultTheme = "auto"                  # auto | dark | light
   showReadingTime = true
   showCodeCopyButtons = true
+  showtoc = true                         # per-post ToC enabled by default
+  tocopen = false                        # ToC collapsed by default
+  description = "AppSec & DevSecOps specialist: SAST (Chimera, Fortify), GitHub/GHAS & CodeQL, JFrog Xray (SCA), secrets in GitHub, CI/CD automation with Docker & GitHub Actions, BigQuery reporting, and white/gray-box pentesting."
 
-[markup.highlight]
-  lineNos = true
+  # Home — Profile Mode (polished hero)
+  [params.profileMode]
+    enabled  = true
+    title    = "Application Security & DevSecOps Specialist"
+    subtitle = "SAST & CodeQL • SCA & secrets • CI/CD automation • Incident handling • White/gray-box pentesting"
+    imageUrl = "img/avatar.jpg"          # place file at: static/img/avatar.jpg
+    imageWidth  = 160
+    imageHeight = 160
+
+    [[params.profileMode.buttons]]
+      name = "GitHub"
+      url  = "https://github.com/ernestomgz"
+
+    [[params.profileMode.buttons]]
+      name = "LinkedIn"
+      url  = "https://www.linkedin.com/in/ernestomgz/"
+
+    [[params.profileMode.buttons]]
+      name = "Latest posts"
+      url  = "/posts/"
+
+  
+
+# -------------------------
+# Social icons (header/footer)
+# -------------------------
+[[params.socialIcons]]
+  name = "github"
+  url  = "https://github.com/ernestomgz"
+
+[[params.socialIcons]]
+  name = "linkedin"
+  url  = "https://www.linkedin.com/in/ernestomgz/"
+
+[[params.socialIcons]]
+  name = "rss"
+  url  = "index.xml"
+
+# -------------------------
+# Menus (navbar)
+# -------------------------
+[[menu.main]]
+  name = "Posts"
+  url  = "/posts/"
+  weight = 10
+
+#[[menu.main]]
+#  name = "About"
+#  url  = "/about/"
+#  weight = 20
+
+[[menu.main]]
+  name = "GitHub"
+  url  = "https://github.com/ernestomgz"
+  weight = 30
+
+[[menu.main]]
+  name = "LinkedIn"
+  url  = "https://www.linkedin.com/in/ernestomgz/"
+  weight = 40
+
+# -------------------------
+# Taxonomies (optional)
+# -------------------------
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+# -------------------------
+# Markup / code highlighting
+# -------------------------
+[markup]
+  [markup.highlight]
+    lineNos = true
+  [markup.goldmark.renderer]
+    unsafe = false                        # set to true only if you need raw HTML in posts
+
+# -------------------------
+# Minification (optional)
+# -------------------------
+[minify]
+  minifyOutput = true
+
+# -------------------------
+# Outputs (ensure RSS on home)
+# -------------------------
+[outputs]
+  home = ["HTML", "RSS", "JSON"]         # JSON helps search features in some themes
