@@ -27,18 +27,11 @@ enableRobotsTXT = true
   [params.profileMode]
     enabled  = true
     title    = "Application Security & DevSecOps Specialist"
-    subtitle = "SAST & CodeQL • SCA & secrets • CI/CD automation • Incident handling • White/gray-box pentesting"
-    imageUrl = "img/avatar.jpg"          # place file at: static/img/avatar.jpg
+    subtitle = "SAST & DAST • SCA & secrets • CI/CD automation • White/gray-box pentesting"
+    #imageUrl = "img/avatar.jpg"          # place file at: static/img/avatar.jpg
+    imageUrl = "https://avatars.githubusercontent.com/u/109539998?v=4"         
     imageWidth  = 160
     imageHeight = 160
-
-    [[params.profileMode.buttons]]
-      name = "GitHub"
-      url  = "https://github.com/ernestomgz"
-
-    [[params.profileMode.buttons]]
-      name = "LinkedIn"
-      url  = "https://www.linkedin.com/in/ernestomgz/"
 
     [[params.profileMode.buttons]]
       name = "Latest posts"
@@ -56,10 +49,6 @@ enableRobotsTXT = true
 [[params.socialIcons]]
   name = "linkedin"
   url  = "https://www.linkedin.com/in/ernestomgz/"
-
-[[params.socialIcons]]
-  name = "rss"
-  url  = "index.xml"
 
 # -------------------------
 # Menus (navbar)
