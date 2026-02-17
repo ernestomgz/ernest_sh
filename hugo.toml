@@ -1,11 +1,13 @@
 # =========================
 # Hugo site config (hugo.toml)
 # =========================
-baseURL = "https://ernest.sh/"
+baseURL = "https://ernestsh-website.azurewebsites.net/"
 languageCode = "en-us"
 title = "Application Security & DevSecOps"
 theme = "PaperMod"
 enableRobotsTXT = true
+relativeURLs = true
+canonifyURLs = true
 
 # Hugo >= 0.128: use pagination.pagerSize
 [pagination]
