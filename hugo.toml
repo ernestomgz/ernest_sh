@@ -18,6 +18,7 @@ canonifyURLs = true
 # -------------------------
 [params]
   # Appearance & UX
+  author = "Ernesto Martinez Gomez"
   defaultTheme = "auto"                  # auto | dark | light
   showReadingTime = true
   showCodeCopyButtons = true
@@ -96,6 +97,13 @@ canonifyURLs = true
 # -------------------------
 [minify]
   minifyOutput = true
+
+# -------------------------
+# Caches
+# -------------------------
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
 
 # -------------------------
 # Outputs (ensure RSS on home)
