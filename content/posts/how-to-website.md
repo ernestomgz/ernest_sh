@@ -20,7 +20,7 @@ This setup works well for a personal blog, portfolio, project page, or documenta
 
 Create the project:
 
-```sh
+```bash
 hugo new site my-website
 cd my-website
 git init
@@ -325,8 +325,6 @@ If you want to also configure the subdomain for `www.<your-domain>`, add a CNAME
 | Type | Host | Value |
 |---|---|---|
 | CNAME | www | `<your-github-username>.github.io` |
-
-For example, a DNS provider dashboard should show the GitHub Pages `A` records for the apex domain and a `www` CNAME pointing to `<your-github-username>.github.io`.
 
 For example, [ernest.sh](https://ernest.sh) is hosted in Porkbun and this is the DNS config I use:
 
