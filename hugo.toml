@@ -29,8 +29,8 @@ canonifyURLs = true
   # Home — Profile Mode (polished hero)
   [params.profileMode]
     enabled  = true
-    title    = "Application Security & DevSecOps Specialist"
-    subtitle = "SAST & DAST • SCA & secrets • CI/CD automation • White/gray-box pentesting"
+    title    = "Ethical Hacker | Pentesting Web & Mobile"
+    subtitle = "Pentesting • AppSec • SecDevOps • SAST & DAST • CI/CD security"
     #imageUrl = "img/avatar.jpg"          # place file at: static/img/avatar.jpg
     imageUrl = "https://avatars.githubusercontent.com/u/109539998?v=4"         
     imageWidth  = 160
