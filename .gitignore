@@ -1,6 +1,7 @@
 # .gitignore
 /public/
 /resources/
+/.hugo_cache/
 .DS_Store
 Thumbs.db
 .idea/
