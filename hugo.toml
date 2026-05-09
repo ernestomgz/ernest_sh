@@ -24,7 +24,7 @@ canonifyURLs = true
   showCodeCopyButtons = true
   showtoc = true                         # per-post ToC enabled by default
   tocopen = false                        # ToC collapsed by default
-  description = "AppSec & DevSecOps specialist: SAST (Chimera, Fortify), GitHub/GHAS & CodeQL, JFrog Xray (SCA), secrets in GitHub, CI/CD automation with Docker & GitHub Actions, BigQuery reporting, and white/gray-box pentesting."
+  description = "Pentesting, AppSec, and SecDevOps specialist focused on grey-box and white-box assessments, code review, exploitation, and remediation."
 
   # Home — Profile Mode (polished hero)
   [params.profileMode]
