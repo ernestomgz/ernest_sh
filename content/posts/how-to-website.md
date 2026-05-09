@@ -74,9 +74,50 @@ Replace `https://example.com/` with your real domain when you have one.
 
 If you do not have a custom domain yet, you can still deploy using the default GitHub Pages URL `https://<your-github-username>.github.io/`
 
-The `caches.images` setting follows Hugo's GitHub Pages recommendations, and the `params.author` value is commonly used by themes for RSS feeds and metadata.
+Create a `.gitignore` file to avoid uploading generated Hugo files:
 
-## 2. Create And Preview Posts
+```text
+/public/
+/resources/
+/.hugo_cache/
+.hugo_build.lock
+```
+
+## 2. Push The Initial Site To GitHub
+
+Create a repository on GitHub, then connect your local project:
+
+```sh
+git remote add origin https://github.com/<your-github-username>/<repository-name>.git
+git add .
+git commit -m "Create Hugo website"
+git branch -M main
+git push -u origin main
+```
+
+If your theme is a submodule, make sure `.gitmodules` is committed. The deployment workflow needs it to fetch the theme.
+
+## 3. Use Branches For Changes (optional)
+
+Use `main` as the deployment branch. For writing, editing, or changing the deployment configuration, create a separate branch.
+
+This guide uses `update-website` as the working branch name. If you prefer another name, replace `update-website` in the commands.
+
+```sh
+git switch -c update-website
+```
+
+Make your changes, preview locally, then commit:
+
+```sh
+git add .
+git commit -m "Add new website content"
+git push origin update-website
+```
+
+Once you want to publish something, open a pull request from `update-website` into `main`. When the pull request is merged, GitHub Actions will build and deploy the site.
+
+## 4. Create And Preview Posts
 
 Create a new post:
 
@@ -118,38 +159,15 @@ If you want to preview drafts too, run:
 hugo server -D
 ```
 
-
-## 3. Use Branches For Changes (optional)
-
-Use `main` as the deployment branch. For writing or editing, create a separate branch:
+Once you have finished editing your post, upload your branch to GitHub:
 
 ```sh
-git checkout -b update-website
-```
-
-Make your changes, preview locally, then commit:
-
-```sh
-git add .
-git commit -m "Add new website content"
+git add content/posts/my-first-post.md
+git commit -m "My first post"
 git push origin update-website
 ```
 
-Open a pull request from your working branch into `main`. When the pull request is merged, GitHub Actions will build and deploy the site.
-
-## 4. Push The Initial Site To GitHub
-
-Create a repository on GitHub, then connect your local project:
-
-```sh
-git remote add origin https://github.com/<your-github-username>/<repository-name>.git
-git add .
-git commit -m "Create Hugo website"
-git branch -M main
-git push -u origin main
-```
-
-If your theme is a submodule, make sure `.gitmodules` is committed. The deployment workflow needs it to fetch the theme.
+In GitHub, create a pull request from `update-website` to `main`. Merge it when you are ready to publish.
 
 ## 5. Configure GitHub Pages And Actions
 
@@ -171,7 +189,7 @@ If you have a custom domain, add it in the repository's GitHub Pages  Custom dom
 
 ![GitHub Pages source set to GitHub Actions](/img/posts/how-to-website/github-pages-source-actions.png)
 
-Also, create `static/CNAME`:
+Also, create the file `static/CNAME` with the following content:
 ```text
 <your-domain>.com
 ```
@@ -182,7 +200,7 @@ Create the workflow file:
 .github/workflows/hugo.yaml
 ```
 
-Use a workflow like this, based on Hugo's official GitHub Pages guide and GitHub's Pages workflow documentation:
+Use a workflow like this, based on [Hugo's official GitHub Pages guide](https://gohugo.io/host-and-deploy/host-on-github-pages/#step-4) and GitHub's Pages workflow documentation:
 
 ```yaml
 name: Build and deploy
@@ -255,22 +273,17 @@ jobs:
 
 This version is intentionally simple. If your theme needs Sass, npm packages, Go modules, or image processing, start from Hugo's official workflow because it includes extra setup and caching.
 
-Important details:
-
-- `main` is the only branch that deploys.
-- `workflow_dispatch` lets you run the workflow manually.
-- `submodules: recursive` fetches themes installed as submodules.
-- `pages: write` and `id-token: write` are required for Pages deployment.
-
 ## 6. Deploy The Site
 
 Commit and push the workflow:
 
 ```sh
-git add .github/workflows/hugo.yaml hugo.toml
+git add .github/workflows/hugo.yaml hugo.toml .gitignore
 git commit -m "Add Hugo GitHub Pages deployment"
-git push origin main
+git push origin update-website
 ```
+
+In GitHub, create a pull request from `update-website` to `main`. The site deploys when the pull request is merged into `main`.
 
 Open:
 
@@ -314,6 +327,8 @@ If you want to also configure the subdomain for `www.<your-domain>`, add a CNAME
 | CNAME | www | `<your-github-username>.github.io` |
 
 For example, a DNS provider dashboard should show the GitHub Pages `A` records for the apex domain and a `www` CNAME pointing to `<your-github-username>.github.io`.
+
+For example, [ernest.sh](https://ernest.sh) is hosted in Porkbun and this is the DNS config I use:
 
 ![DNS records for GitHub Pages](/img/posts/how-to-website/dns-records.png)
 
