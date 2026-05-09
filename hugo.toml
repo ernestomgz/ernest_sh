@@ -1,9 +1,9 @@
 # =========================
 # Hugo site config (hugo.toml)
 # =========================
-baseURL = "https://ernestsh-website.azurewebsites.net/"
-languageCode = "en-us"
-title = "Application Security & DevSecOps"
+baseURL = "https://ernest.sh/"
+locale = "en-us"
+title = "ernest.sh"
 theme = "PaperMod"
 enableRobotsTXT = true
 relativeURLs = true
